@@ -1,0 +1,38 @@
+buildscript {
+    ext.kotlin_version = '1.2.70'
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:3.0.0'
+
+
+    }
+}
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://maven.fabric.io/public'
+            //url 'https://jitpack.io'
+        }
+        //    maven {
+        //url 'https://maven.fabric.io/public'
+        //        url 'https://jitpack.io'
+        // }
+    }
+}
+
+ext{
+    firebaseCore = "16.0.3"
+    firebaseMessaging = "17.3.2"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

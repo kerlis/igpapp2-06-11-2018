@@ -1,0 +1,80 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="sistemasfireg.igp.org.sismosperu.MainActivity">
+    <!--
+
+      <item
+          android:id="@+id/spinner"
+          android:title="ActionBar Spinner"
+          app:actionViewClass="android.widget.Spinner"
+          android:background="#ff00"
+          app:showAsAction=" />
+         <item
+          android:id="@+id/action_refresh"
+          android:orderInCategory="100"
+          android:title="@string/action_refresh"
+          app:showAsAction="never" />
+
+
+
+  -->
+    <item
+        android:id="@+id/ultimo_sismo"
+         android:title="Último Sismo"/>
+
+
+    <item
+        android:id="@+id/listado_ultimos_sismos"
+        android:title="Sismos Recientes" />
+
+
+
+    <item
+        android:id="@+id/mapa_sismos"
+        android:title="Mapa Sísmico" />
+
+
+
+
+    <item
+        android:id="@+id/glosario"
+        android:title="Glosario" />
+
+
+<!--
+    <item
+        android:id="@+id/acerca"
+        android:title="Acerca del aplicativo" />
+-->
+    <item
+        android:id="@+id/notificarsino"
+        android:title="Configuraciones" />
+
+<!--
+    <item android:id="@+id/addMenu" android:title="Adicionar" android:showAsAction="always"/>
+
+-->
+    <!--
+
+
+        <item
+            android:id="@+id/mapa_sismos"
+            android:title="Mapa de los Últ sismos  " />
+
+
+
+        <item
+            android:id="@+id/busqueda"
+            android:title="Busqueda" />
+    -->
+
+    <item
+        android:id="@+id/salir"
+        android:title="Salir" />
+
+
+
+
+
+</menu>

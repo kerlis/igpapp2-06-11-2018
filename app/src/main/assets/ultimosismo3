@@ -1,0 +1,881 @@
+package sistemasfireg.igp.org.sismosperu;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.text.DecimalFormat;
+
+public class Ultimosismo3 extends FragmentActivity implements OnMapReadyCallback {
+    SupportMapFragment sMapFragment;
+    Button mk;
+    TextView text_hora;
+    TextView text_intensidad;
+    TextView text_ubicacion;
+    TextView text_profundidad;
+    TextView txtmagnitud;
+    TextView txtubicacion;
+    TextView texto;
+    TextView iconocompartir;
+    RelativeLayout textoencabezado;
+    public Context c;
+    public String fechadato;
+    public String horadato;
+
+    public String ubicacion;
+    public String epicentro;
+    public String latitud;
+    public String longitud;
+    public Double lati;
+    public Double longit;
+    private static String urlString;
+    int mWidthScreen;
+    int mHeightScreen;
+    String magni,ml,nh;
+    int tamano;
+    Button satelite,terreno;
+    private static final String TAG = Ultimosismo3.class.getSimpleName();
+    private DatabaseReference mFirebaseDatabase;
+    String dato_intensidad;
+    String dato_hora;
+    String dato_fecha;
+    String dato_profundidad;
+    String dato_epicentro;
+    String dato_ubicacion;
+    String magnitud2;
+    GoogleMap googleMap;
+    Button datox;
+    private static final String jsonurl= "http://arteypixel.com/envio_notificaciones/consultaposicion.php";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        onNewIntent(getIntent());
+        //ver que tipo de conexxion se esta utilizando
+        ConnectivityManager cmanager = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cmanager.getActiveNetworkInfo();
+        if(info!= null && info.isConnected()){
+            if(info.getType() == ConnectivityManager.TYPE_WIFI) {
+                Toast.makeText(Ultimosismo3.this, "Conexión Establecida", Toast.LENGTH_LONG).show();
+            }
+            else if(info.getType() == ConnectivityManager.TYPE_MOBILE){
+                Toast.makeText(Ultimosismo3.this, "Conexión Establecida", Toast.LENGTH_LONG).show();
+            }
+        }
+        else{
+            Toast.makeText(Ultimosismo3.this, "Su Equipo ha Bloquedo la Conexión", Toast.LENGTH_LONG).show();
+        }
+
+
+    //    try {
+        try {
+            consulta("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //  } catch (IOException e) {
+      //      e.printStackTrace();
+     //   }
+        //    consulta2(jsonurl);
+
+        sMapFragment = SupportMapFragment.newInstance();
+        FragmentManager sFm = getSupportFragmentManager();
+        sFm.beginTransaction().add(R.id.mapx, sMapFragment).commit();
+        sMapFragment.getMapAsync(this);
+        setContentView(R.layout.activity_ultimosismo3);
+
+        Typeface fontAwesomeFont = Typeface.createFromAsset(getAssets(), "fontawesome-webfont.ttf");
+        TextView ihoras = (TextView) findViewById(R.id.iconohora);
+        TextView iubicaciones = (TextView) findViewById(R.id.iconoubicacion);
+        ihoras.setTypeface(fontAwesomeFont);
+        iubicaciones.setTypeface(fontAwesomeFont);
+        satelite = (Button) findViewById(R.id.satelite);
+        terreno = (Button) findViewById(R.id.terreno);
+        datox = (Button) findViewById(R.id.localizacion);
+        datox.setTypeface(fontAwesomeFont);
+        text_hora = (TextView) findViewById(R.id.text_hora);
+        text_intensidad = (TextView) findViewById(R.id.text_intensidad);
+        text_ubicacion = (TextView) findViewById(R.id.text_ubicacion);
+        text_profundidad = (TextView) findViewById(R.id.text_profundidad);
+        txtmagnitud= (TextView) findViewById(R.id.grados);
+        txtubicacion= (TextView) findViewById(R.id.txtubicacion);
+        texto = (TextView) findViewById(R.id.texto);
+
+        iconocompartir = (TextView) findViewById(R.id.iconocompartir);
+        iconocompartir.setTypeface(fontAwesomeFont);
+        iconocompartir.setBackgroundResource(R.drawable.circuloblanco);
+
+        textoencabezado = (RelativeLayout) findViewById(R.id.textoencabezado);
+
+        detecta_sismo();
+        FrameLayout frame1 = (FrameLayout) findViewById(R.id.mapx);
+        Display display = ((WindowManager) this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        mWidthScreen = display.getWidth();
+        mHeightScreen = display.getHeight();
+
+        switch (getResources().getDisplayMetrics().densityDpi) {
+            case DisplayMetrics.DENSITY_LOW:
+                tamano = (mHeightScreen - 259);
+                break;
+
+            case DisplayMetrics.DENSITY_MEDIUM:
+                tamano = (mHeightScreen - 345);
+                break;
+
+            case DisplayMetrics.DENSITY_TV:
+                tamano = (mHeightScreen - 459);
+                break;
+
+
+            case DisplayMetrics.DENSITY_HIGH:
+                tamano = (mHeightScreen - 518);
+                break;
+
+            case DisplayMetrics.DENSITY_XHIGH:
+                tamano = (mHeightScreen - 690);
+                break;
+
+
+            case DisplayMetrics.DENSITY_XXHIGH:
+                tamano = (mHeightScreen - 1035);
+                break;
+
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                tamano = (mHeightScreen - 1380);
+                break;
+
+        }
+
+        frame1.getLayoutParams().height = tamano;
+        frame1.requestLayout();
+        mk= (Button) findViewById(R.id.button);
+        mk.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(Ultimosismo3.this, mk);
+                popup.getMenuInflater().inflate(R.menu.menu_main, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        int id = item.getItemId();
+
+                        if (id == R.id.ultimo_sismo) {
+                            Intent intent = new Intent(Ultimosismo3.this,Ultimosismo3.class);
+                            startActivity(intent);
+                            return true;
+                        }
+
+
+                        if (id == R.id.listado_ultimos_sismos) {
+                            Intent intent = new Intent(Ultimosismo3.this,Ultimosismoslist.class);
+                            startActivity(intent);
+                            return true;
+                        }
+
+                        if (id == R.id.mapa_sismos) {
+                            Intent intent = new Intent(Ultimosismo3.this,Listadoenmapa.class);
+                            startActivity(intent);
+                            return true;
+                        }
+
+                        if (id == R.id.glosario) {
+                            Intent intent = new Intent(Ultimosismo3.this,Glosarioestatico.class);
+                            startActivity(intent);
+                            return true;
+                        }
+
+                        if (id == R.id.notificarsino) {
+                            Intent intent = new Intent(Ultimosismo3.this,Configuraciones.class);
+                            startActivity(intent);
+                            return true;
+                        }
+
+                        if (id == R.id.salir) {
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_HOME);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                        return Ultimosismo3.super.onOptionsItemSelected(item);
+                    }
+                });
+                popup.show();
+            }
+        });
+        mostrar_ult_sismo();
+    }
+
+
+
+
+    @Override
+    public void onNewIntent(Intent intent){
+        Bundle extras = intent.getExtras();
+        if(extras != null){
+            if(extras.containsKey("NotificationMessage"))
+            {
+                String latitudk = extras.getString("NotificationMessage");
+                Toast.makeText(Ultimosismo3.this,"k : "+latitudk, Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(Ultimosismo3.this,"no hay datos ", Toast.LENGTH_LONG).show();
+
+            }
+        }
+
+
+    }
+
+
+
+    public void consulta2(String urlString ) {
+
+        class GetJSON extends AsyncTask<String, Void, String> {
+            protected String doInBackground(String... parans) {
+                String uri = parans[0];
+                BufferedReader bufferedReader = null;
+                try {
+                    URL url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                    // String json;
+                    String json;
+
+
+                    while((json = bufferedReader.readLine())!=null){
+                        sb.append(json + "\n");
+                       // Toast.makeText(getApplicationContext(), sb.append(json + "\n"), Toast.LENGTH_SHORT).show();
+                      //  Log.e("log_tag", "Error in http connection");
+
+                    }
+
+                     return sb.toString().trim();
+                }
+                catch (IOException e) {
+                    Log.e("log_tag", "Error in http connection" + e.toString());
+
+                   return null;
+                }
+
+                // }
+            }
+
+
+        }
+
+        GetJSON gj = new GetJSON();
+        gj.execute(urlString);
+
+    }
+
+/*
+
+        String result = null;
+        InputStream is = null;
+        try {
+            HttpPost httpPost = new HttpPost("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpResponse response =  httpclient.execute(httpPost);
+            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+            StringBuffer sb = new StringBuffer("");
+            String line = in.readLine();
+            Log.e("log_tag", "connection success");
+            Toast.makeText(getApplicationContext(), line, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("log_tag", "Error in http connection" + e.toString());
+            Toast.makeText(getApplicationContext(), "sin conexion", Toast.LENGTH_SHORT).show();
+        }
+
+*/
+
+
+    public void consulta(String urlString) throws IOException {
+
+
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+                    HttpURLConnection urlConnection = null;
+                    BufferedReader bufferedReader = null;
+
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                   // InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+
+                    bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    String json = bufferedReader.readLine();
+
+                 //  Toast.makeText(getApplicationContext(), json, Toast.LENGTH_SHORT).show();
+
+                    Log.d(TAG, "get json: " + json);
+                    urlConnection.disconnect();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+ /*
+        URL url = new URL("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        try {
+          //  InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+          //  String json = in.readLine();
+          //  Toast.makeText(getApplicationContext(), json, Toast.LENGTH_SHORT).show();
+
+
+            BufferedReader bufferedReader = null;
+
+            bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+            //String json;
+
+
+            String json = bufferedReader.readLine();
+
+            Toast.makeText(getApplicationContext(), json, Toast.LENGTH_SHORT).show();
+
+
+
+        } finally {
+            urlConnection.disconnect();
+        }
+        */
+
+
+
+ /*
+
+        class GetJSON extends AsyncTask<String, Void, String> {
+            protected String doInBackground(String... parans) {
+                String uri = parans[0];
+                BufferedReader bufferedReader = null;
+                String result = null;
+                InputStream is = null;
+                HttpURLConnection connection = null;
+
+                URL url = null;
+                try {
+                    url = new URL("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                HttpURLConnection urlConnection = null;
+                try {
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    //    URL url = new URL(uri);
+                    //   HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    //    con.setDoOutput(true);
+                    //    con.setDoInput(true);
+                  //  StringBuilder sb = new StringBuilder();
+                  //  bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                    // String json;
+                 //   String json;
+
+                    StringBuilder sb = new StringBuilder();
+                    bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+                    //String json;
+
+
+                    String json = bufferedReader.readLine();
+                    Toast.makeText(getApplicationContext(), json, Toast.LENGTH_SHORT).show();
+
+
+                    while((json = bufferedReader.readLine())!=null){
+                        sb.append(json + "\n");
+                        // Toast.makeText(getApplicationContext(), sb.append(json + "\n"), Toast.LENGTH_SHORT).show();
+                        //  Log.e("log_tag", "Error in http connection");
+
+                    }
+
+                    return json;
+
+                  //  return sb.toString().trim();
+                }
+                catch (IOException e) {
+                    Log.e("log_tag", "Error in http connection" + e.toString());
+
+                    return null;
+                }
+
+
+
+            }
+        }
+        */
+
+
+
+
+                       /*
+                URL url = new URL("http://your_url/test.php");
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setDoOutput(true);
+                connection.setDoInput(true);
+                try {
+                    connection.setRequestMethod("GET");
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                }
+                connection.setUseCaches(false);
+                connection.setConnectTimeout(720000000);
+                connection.setReadTimeout(72000000);
+                try {
+                    connection.connect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                StringBuilder sb = new StringBuilder();
+                bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+                //String json;
+
+
+                String json = bufferedReader.readLine();
+*//*
+        Uri.Builder builder = new Uri.Builder().appendQueryParameter("message", message);
+        String data = builder.build().getEncodedQuery();
+
+        OutputStreamWriter output = new OutputStreamWriter(connection.getOutputStream());
+        output.write(data);
+        output.flush();
+        output.close();
+
+        connection.disconnect();
+        /*
+
+        /*
+        URL url = new URL("http://www.android.com/");
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        try {
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            readStream(in);
+        } finally {
+            urlConnection.disconnect();
+        }
+        */
+
+
+
+
+         /*
+        try {
+            HttpPost httpPost = new HttpPost("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+            HttpClient httpclient = new DefaultHttpClient();
+
+            HttpResponse response =  httpclient.execute(httpPost);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+            StringBuffer sb = new StringBuffer("");
+            // String line="";
+            String line = in.readLine();
+
+            //while ((line = in.readLine()) != null) {
+            //  sb.append(line);
+            //break;
+            //}
+
+            // HttpEntity entity = response.getEntity();
+            //is = entity.getContent();
+            Log.e("log_tag", "connection success");
+            Toast.makeText(getApplicationContext(), line, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("log_tag", "Error in http connection" + e.toString());
+            Toast.makeText(getApplicationContext(), "sin conexion", Toast.LENGTH_SHORT).show();
+        }
+*/
+        /*
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+            HttpResponse response =  httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+            Log.e("log_tag", "connection success");
+            //   Toast.makeText(getApplicationContext(), ?pass?, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("log_tag", "Error in http connection" + e.toString());
+            Toast.makeText(getApplicationContext(), "Connection fail", Toast.LENGTH_SHORT).show();
+        }
+         */
+    }
+
+
+
+
+    public void detecta_sismo() {
+        if (mFirebaseDatabase == null) {
+            FirebaseDatabase.getInstance();
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            mFirebaseDatabase = database.getReference("messages");
+        }
+        else{
+            FirebaseDatabase.getInstance();
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            mFirebaseDatabase = database.getReference("messages");
+        }
+
+        mFirebaseDatabase.keepSynced(true);
+        mFirebaseDatabase.orderByKey().limitToLast(1).addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                DatSismo sreporte = dataSnapshot.getValue(DatSismo.class);
+                guardar_pref(sreporte);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                DatSismo sreporte = dataSnapshot.getValue(DatSismo.class);
+                guardar_pref(sreporte);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                DatSismo sreporte = dataSnapshot.getValue(DatSismo.class);
+                guardar_pref(sreporte);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                DatSismo sreporte = dataSnapshot.getValue(DatSismo.class);
+                guardar_pref(sreporte);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void guardar_pref(DatSismo sreporte) {
+        SharedPreferences prefs = getSharedPreferences("ultsismo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("incategoria", sreporte.getCategoria());
+        editor.putString("inreferencia", sreporte.getReferencia());
+        editor.putString("inmagnitud", sreporte.getMagnitud());
+        editor.putString("inprof", sreporte.getProfundidad());
+        editor.putString("infecha", sreporte.getFechautc());
+        editor.putString("txintenso", sreporte.getIntenso());
+        editor.putString("inhora", sreporte.getHorautc());
+        editor.putString("inlat", sreporte.getLat());
+        editor.putString("inlong", sreporte.getLon());
+        editor.putString("inepic", sreporte.getEpicentro());
+        editor.putString("insim", sreporte.getSimulacro());
+        editor.apply();
+        mostrar_ult_sismo();
+
+    }
+
+
+
+
+    public void mostrar_ult_sismo() {
+        SharedPreferences prefs = getSharedPreferences("ultsismo", Context.MODE_PRIVATE);
+        String intensidad = prefs.getString("txintenso", "");
+        String hora = prefs.getString("inhora", "");
+        String fecha = prefs.getString("infecha", "");
+        String simulacro  = prefs.getString("insim", "");
+        String profundidad = prefs.getString("inprof","");
+
+        fechadato= prefs.getString("infecha","0");
+        horadato = prefs.getString("inhora","0");
+
+        latitud = prefs.getString("inlat","0");
+        longitud = prefs.getString("inlong","0");
+        epicentro = prefs.getString("inepic","");
+        magni = prefs.getString("inmagnitud","");
+        ubicacion = prefs.getString("inreferencia","Aqui");
+
+
+        iconocompartir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Reporte de Último Sismo Perú" +  "\n";
+                String shareSub = "Reporte de Último Sismo Perú" +  "\n" + "Fecha Local: " + fechadato + "  " + horadato +  "\n Magnitud: " + magni + "\n" +  "Latitud: " + latitud + " " + "Longitud: " + longitud + "\n" + "Referencia: " + ubicacion + "\n"  +   "\n"  ;
+                //String shareSub2 = "http://ultimosismo.igp.gob.pe/";
+
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareBody);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareSub);
+               // sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareSub2);
+
+                startActivity(Intent.createChooser(sharingIntent, "compartir último sismo"));
+            }
+        });
+
+
+
+        //evaluar dato intensidad
+        if (intensidad.length() == 0){
+            dato_intensidad = "- -";
+        }
+        else{
+            dato_intensidad = intensidad;
+        }
+        text_intensidad.setText(dato_intensidad);
+
+
+        //evaluar dato epicentro
+        if (epicentro.length() == 0){
+            dato_epicentro = "- -";
+        }
+        else{
+            dato_epicentro = epicentro;
+        }
+
+        //evaluar dato hora
+        if (hora.length() == 0){
+            dato_hora = "- -";
+        }
+        else{
+            dato_hora = hora;
+        }
+
+        //evaluar dato fecha
+        if (fecha.length() == 0){
+            dato_fecha = "- -";
+        }
+        else{
+            dato_fecha = fecha;
+        }
+        text_hora.setText(dato_fecha+"   "+dato_hora);
+
+
+        //evaluar dato profundidad
+        if (profundidad.length() == 0){
+            dato_profundidad= "- -";
+        }
+        else{
+            dato_profundidad = profundidad;
+        }
+        text_profundidad.setText(dato_profundidad+""+" km");
+
+
+        //evaluar dato magnitud
+        double w;
+
+        try {
+            w = new Double(magni);
+        } catch (NumberFormatException e) {
+            w = 0;
+        }
+
+        if (w == 0){
+            magnitud2 = "0";
+        }
+        else
+        {
+            magnitud2 = magni;
+        }
+
+
+        Double val = Double.parseDouble(magnitud2);
+
+        txtmagnitud.setText(magnitud2);
+
+
+        if (val >= 0 && val < 4.5){
+            txtmagnitud.setBackgroundResource(R.drawable.circuloverde);
+            textoencabezado.setBackgroundColor(getResources().getColor(R.color.verdeigp));
+
+        }
+
+        else if (val >= 4.5 && val <= 6.0){
+            txtmagnitud.setBackgroundResource(R.drawable.circuloamarillo);
+            textoencabezado.setBackgroundColor(getResources().getColor(R.color.orangeyellow));
+
+        }
+
+
+        else if (val > 6.0 && val <= 15){
+            txtmagnitud.setBackgroundResource(R.drawable.circulorojo);
+            textoencabezado.setBackgroundColor(getResources().getColor(R.color.rojoigp));
+
+        }
+
+        else  {
+            txtmagnitud.setBackgroundResource(R.drawable.circulorojo);
+            textoencabezado.setBackgroundColor(getResources().getColor(R.color.rojoigp));
+
+        }
+
+
+
+
+
+
+
+
+
+        //evaluar dato ubicacion
+        if (ubicacion.length() == 0){
+            dato_ubicacion = "null";
+        }
+        else{
+            dato_ubicacion = ubicacion;
+        }
+
+        String z = dato_ubicacion.replace("-","\n");
+        txtubicacion.setText(z);
+
+
+        //evaluar dato simulacro
+        int g;
+
+        try {
+            g = new Integer(simulacro);
+        } catch (NumberFormatException e) {
+            g = 0;
+        }
+
+
+
+        if (g == 0){
+            texto.setText("Último Sismo");
+        }
+        else if (g == 1){
+            texto.setText("Simulacro");
+        }
+        else if (g == 2){
+            texto.setText("Simulación");
+        }
+        else{
+            texto.setText("Último Sismo");
+        }
+
+/*
+        if (g > 0){
+            texto.setText("Simulacro");
+        }
+        else if (g < 1){
+            texto.setText("Último sismo");
+        }
+        else{
+            texto.setText("Último sismo");
+        }
+
+      */
+
+
+        lati= Double.parseDouble(latitud);
+        longit = Double.parseDouble(longitud);
+        sMapFragment.getMapAsync(this);
+        DecimalFormat form = new DecimalFormat("0.00");
+        text_ubicacion.setText(form.format(lati)+"  "+" "+form.format(longit));
+    }
+
+    public void onMapReady(final GoogleMap googleMap) {
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.iconored);
+        LatLng latLng = new LatLng(lati,longit);
+        if (latLng != null){
+            googleMap.clear();
+        }
+        googleMap.addMarker(new MarkerOptions().position(latLng).title("Epicentro").icon(icon).anchor(0.5f, 0.5f)).showInfoWindow();
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 6));
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(6), 1500, null);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setIndoorLevelPickerEnabled(true);
+        googleMap.getUiSettings().setTiltGesturesEnabled(true);
+        googleMap.getUiSettings().setCompassEnabled(true);
+
+        satelite.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View arg0) {
+                googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            }
+        });
+
+        terreno.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View arg0) {
+                googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            }
+        });
+
+
+        datox.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View arg0) {
+                // map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lati, longit), 6));
+            }
+        });
+
+
+    }
+}

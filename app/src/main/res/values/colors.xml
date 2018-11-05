@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black_v">#000000</color>
+    <color name="azulbackground">#001665</color>
+
+
+    <color name="purpura">#800080</color>
+    <color name="marron">#A52A2A</color>
+    <color name="azulOscuro">#191970</color>
+
+    <color name="igp">#1C2F59</color>
+
+    <color name="gris">#cfd8dc</color>
+
+    <color name="grisfondo">#9E9E9E</color>
+
+
+    <color name="transparente6">#44000000</color>
+
+
+    <color name="white">#ffffff</color>
+
+
+    <color name="naranja">#FF8C00</color>
+    <color name="orquidea">#BA55D3</color>
+    <color name="negro">#000000</color>
+
+    <color name="negro2">#2E2E2E</color>
+
+
+    <color name="rojo">#f50</color>
+    <color name="blanco">#ffffff</color>
+
+    <color name="alarma">#f44336</color>
+
+    <color name="azuligp">#1565c0</color>
+
+
+
+    <color name="encabezado">#2196f3</color>
+    <color name="complemento">#bdbdbd</color>
+
+    <color name="verdefecha">#3f51b5</color>
+    <color name="ver_profundidad_distancia">#607d8b</color>
+    <color name="ubicacion">#455a64</color>
+
+    <color name="grisoscuro">#607d8b</color>
+
+    <color name="rojotext">#ff4638</color>
+
+    <color name="etiquetas_filtros">#000000</color>
+
+    <color name="radioboton_color">#00CEF5</color>
+
+
+    <color name="orangeyellow">#FBBD08</color>
+
+    <color name="orangeyellowoscuro">#daa51e</color>
+
+
+    <color name="amarillo">#e5ed00</color>
+
+    <color name="verde">#00d24b</color>
+
+
+    <color name="rojo2">#fc3400</color>
+
+
+
+
+    <color name="transparente">#73000000</color>
+
+    <color name="negrobajo">#292929</color>
+
+    <color name="rojooscuro">#f44336</color>
+
+    <color name="blanco2">#00ffffff</color>
+
+    <color name="gris_claro">#959B9E</color>
+
+
+
+    <color name="celeste_boton_sugerencias">#0BBBE3</color>
+    <color name="celeste_sombra_boton_sugerencias">#06738c</color>
+
+
+    <color name="textomenuigp">#164769</color>
+    <color name="blancohueso">#f5f5f5</color>
+
+
+    <color name="rojoigp">#db2828</color>
+    <color name="verdeigp">#04B70D</color>
+
+
+    <color name="botonsismos">#78909c</color>
+    <color name="botonsismosclic">#455a64</color>
+    <color name="plomo_clarito2">#EBEBDF</color>
+
+
+</resources>

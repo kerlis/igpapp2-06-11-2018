@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+android {
+    signingConfigs {
+        config {
+            keyAlias 'llave'
+            keyPassword '123456'
+            storeFile file('/Users/erlisaquinoguerrero/Desktop/key.jks ')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion '26.0.3'
+    useLibrary 'org.apache.http.legacy'
+    compileOptions.encoding = 'ISO-8859-1'
+    defaultConfig {
+        applicationId "sistemasfireg.igp.org.sismosperu"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 34
+        versionName '55'
+        multiDexEnabled true
+        signingConfig signingConfigs.config
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    dexOptions {
+        incremental true
+
+        javaMaxHeapSize "4G"
+    }
+    aaptOptions {
+        cruncherEnabled = false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable false
+            jniDebuggable false
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+    productFlavors {
+    }
+
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.google.firebase:firebase-database:15.0.1'
+
+    ///compile 'com.google.firebase:firebase-messaging:11.8.0'
+    //compile 'com.google.firebase:firebase-database:11.8.0'
+    compile 'com.firebaseui:firebase-ui:1.1.1'
+    compile 'com.firebase:firebase-client-android:2.5.2+'
+
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    testCompile 'junit:junit:4.12'
+    compile "me.leolin:ShortcutBadger:1.1.21@aar"
+
+    compile 'com.google.maps.android:android-maps-utils:0.4.4'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+
+
+
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+
+
+
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+
+    implementation 'com.google.firebase:firebase-core:16.0.3'
+    implementation "com.google.firebase:firebase-core:${rootProject.ext.firebaseCore}"
+    implementation "com.google.firebase:firebase-messaging:${rootProject.ext.firebaseMessaging}"
+
+
+}
+apply plugin: 'com.google.gms.google-services'

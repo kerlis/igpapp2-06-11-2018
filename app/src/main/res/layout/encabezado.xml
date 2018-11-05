@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="60dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="0dp"
+    android:id="@+id/encabezado"
+    android:background="@drawable/encabezadobackground">
+    <RelativeLayout android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/imagen3">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:id="@+id/sliderz"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/header_menu"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/texto2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_toStartOf="@+id/imagen1"
+        android:layout_toEndOf="@+id/imagen3">
+        <TextView
+            style="@style/texto_encabezado_normal"
+            android:layout_width="match_parent"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="CENTRO NACIONAL DE MONITOREO SÍSMICO"
+            android:textColor="@color/black_v" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:id="@+id/imagen1">
+        <ImageView
+            android:src="@drawable/logoigp"
+            android:id="@+id/logoigp"
+            style="@style/logoigp_normal_port2"
+            android:layout_alignParentLeft="true"
+            android:gravity="center|center_vertical"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</RelativeLayout>

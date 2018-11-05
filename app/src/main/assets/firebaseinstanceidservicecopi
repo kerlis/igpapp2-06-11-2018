@@ -1,0 +1,151 @@
+package sistemasfireg.igp.org.sismosperu;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
+import static java.lang.System.in;
+
+public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
+    /*
+    String link = "http://myphpmysqlweb.hostei.com/login.php?username="+username+"& password="+password;
+    URL url = new URL(link);
+    HttpClient client = new DefaultHttpClient();
+    HttpGet request = new HttpGet();
+    request.setURI(new URI(link));
+*/
+
+   // String username = (String)arg0[0];
+   // String password = (String)arg0[1];
+
+
+
+
+    String elvalor = "a";
+    String elvalor2 = "bb";
+    String Message;
+    String ko,ajustes,tipo;
+    Integer r,s;
+
+    @Override
+    public void onTokenRefresh() {
+        String token = FirebaseInstanceId.getInstance().getToken();
+        registerToken(token);
+        ver();
+        consulta();
+    }
+    private void registerToken(String token) {
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = new FormBody.Builder()
+                .add("Token",token)
+                .build();
+        Request request = new Request.Builder()
+               .url("http:www.arteypixel.com/envio_notificaciones/register.php")
+
+              //  .url("http:bndg.igp.gob.pe/bd/register.php")
+                .post(body)
+                .build();
+        try {
+            client.newCall(request).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    private void ver() {
+
+        String Message3 = elvalor + ",";
+        String Message4 = elvalor2 + ",";
+
+
+        String file_name = "datos_configuracion";
+        try {
+            FileOutputStream fileOutputStream = openFileOutput(file_name, MODE_PRIVATE);
+            fileOutputStream.write(Message3.getBytes());
+            fileOutputStream.write(Message4.getBytes());
+            fileOutputStream.close();
+          //  Toast.makeText(getApplicationContext(), "Configurado", Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void consulta() {
+        String result = null;
+        InputStream is = null;
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpGet httpget = new HttpGet("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+            HttpResponse response =  httpclient.execute(httpget);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+            StringBuffer sb = new StringBuffer("");
+           // String line="";
+            String line = in.readLine();
+
+            //while ((line = in.readLine()) != null) {
+              //  sb.append(line);
+                //break;
+            //}
+
+           // HttpEntity entity = response.getEntity();
+            //is = entity.getContent();
+            Log.e("log_tag", "connection success");
+             Toast.makeText(getApplicationContext(), line, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("log_tag", "Error in http connection" + e.toString());
+            Toast.makeText(getApplicationContext(), "Connection fail", Toast.LENGTH_SHORT).show();
+        }
+
+        /*
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://arteypixel.com/envio_notificaciones/consultaposicion.php");
+            HttpResponse response =  httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+            Log.e("log_tag", "connection success");
+            //   Toast.makeText(getApplicationContext(), ?pass?, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.e("log_tag", "Error in http connection" + e.toString());
+            Toast.makeText(getApplicationContext(), "Connection fail", Toast.LENGTH_SHORT).show();
+        }
+         */
+    }
+
+}

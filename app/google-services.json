@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "303863428410",
+    "firebase_url": "https://igpsismos2.firebaseio.com",
+    "project_id": "igpsismos2",
+    "storage_bucket": "igpsismos2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303863428410:android:1402b91e5e43a65b",
+        "android_client_info": {
+          "package_name": "sistemasfireg.igp.org.detectasismo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303863428410-ev3gg1vcdnf53cm8sk31d2nhqdmmkl21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3_COqbY3lXXd3RSMIe_i0OlPIY3btno0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303863428410:android:2beb852339b44b6e",
+        "android_client_info": {
+          "package_name": "sistemasfireg.igp.org.sismosperu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303863428410-ev3gg1vcdnf53cm8sk31d2nhqdmmkl21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3_COqbY3lXXd3RSMIe_i0OlPIY3btno0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

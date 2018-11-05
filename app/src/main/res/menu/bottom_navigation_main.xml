@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_favorites"
+        android:enabled="true"
+        android:icon="@drawable/ic_reportar"
+        android:title="@string/reportar"
+        app:showAsAction="ifRoom" />
+    <item                android:enabled="true"
+
+
+        android:id="@+id/action_schedules"
+        android:icon="@drawable/ic_good"
+        android:title="@string/estoy_bien"
+        app:showAsAction="ifRoom" />
+    <item               android:enabled="true"
+
+
+        android:id="@+id/action_music"
+        android:icon="@drawable/ic_status"
+        android:title="@string/status"
+        app:showAsAction="ifRoom" />
+
+    <item        android:enabled="true"
+
+        android:id="@+id/action_music2"
+        android:icon="@drawable/ic_hospital"
+        android:title="@string/asistencia"
+        app:showAsAction="ifRoom" />
+
+    <item        android:enabled="true"
+
+        android:id="@+id/action_schedules2"
+        android:icon="@drawable/ic_problem"
+        android:title="@string/sos"
+        app:showAsAction="ifRoom" />
+
+</menu>

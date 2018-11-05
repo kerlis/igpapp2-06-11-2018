@@ -1,0 +1,269 @@
+<resources>
+    <string name="app_name">Sismos Perú</string>
+    <string name="profundidadkm">Profundidades<u>Profundidades km</u></string>
+
+
+    <string name="default_notification_channel_id">default_channel_id</string>
+
+
+    <string name="default_notification_channel_id_sismos">default_channel_id_sismos</string>
+    <string name="default_notification_channel_name_sismos">default_channel_name_sismos</string>
+    <string name="channel_description_sismos" translatable="false">fcm_default_channel_sismos</string>
+
+
+    <string name="channel_name" translatable="false">fcm_default_channel</string>
+
+
+    <string name="default_notification_channel_name">default_channel_name</string>
+    <string name="channel_description" translatable="false">fcm_default_channel</string>
+
+
+<string name="menu_settings">Settings</string>
+    <string name="ranklabel">"Rank : "</string>
+    <string name="countrylabel">"Country : "</string>
+    <string name="populationlabel">"Population : "</string>
+    <string name="asignacionlabel">"Asignación : "</string>
+    <string name="magnitudlabel">"Magnitud : "</string>
+    <string name="profundidadlabel">"Profundidad : "</string>
+    <string name="localizacionlabel">"Localización : "</string>
+    <string name="imaxlabel">"Imax : "</string>
+
+    <string name="defaultpassword">
+      CARGAR MÁS SISMOS
+    </string>
+
+    <!--    <string name="defaultpassword">
+        <a href="http://ultimosismo.igp.gob.pe/bdsismos/ultimosSismosSentidos.php">CARGA ULTIMOS SISMOS</a>
+    </string>
+    -->
+
+
+    <string-array name="lista">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sabado</item>
+        <item>Domingo</item>
+    </string-array>
+
+
+    <!--strings listview -->
+    <string name="label_listview_fechahora">FECHA HORA</string>
+    <string name="label_listview_ubicacion">UBICACIÓN</string>
+    <string name="label_listview_profundidad">PROFUNDIDAD</string>
+
+
+    <string name="inicio1">Instituto Geofisico del Perú</string>
+    <string name="inicio2">Control de Sismos v. 1.0</string>
+    <string name="boton1">Ingresar</string>
+    <string name="bmenu1">Último Sismo</string>
+    <string name="bmenu2">Información de Sismos</string>
+    <string name="bmenu3">Redes Sociales</string>
+    <string name="bmenu4">Servicios</string>
+    <string name="bmenu5">Salir</string>
+    <string name="bvalor1">Escala Richter</string>
+    <string name="bvalor2">Hora</string>
+    <string name="bvalor3">Distancia</string>
+    <string name="bvalor4">Ubicación</string>
+    <string name="bvalor5">Profundidad</string>
+    <string name="triesgo1">Nombre:</string>
+    <string name="triesgo2">Dirección:</string>
+    <string name="triesgo3">Tipo:</string>
+    <string name="triesgo4">Ingrese el nombre de un lugar</string>
+
+    <string name="ultimo_sismo_title">últimos sismo</string>
+    <string name="ultimos_sismos_title">últimos sismos </string>
+    <string name="las_noticias">noticias</string>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="title_activity_detail">Detail Activity</string>
+    <string name="google_maps_api_key">AIzaSyBn447xeNvDqgwfix69ROb-otRg6e4xWsI</string>
+
+    <!--lista de iconos por usar -->
+    <string name="info">&#xf05a;</string>
+    <string name="noticias">&#xf1ea;</string>
+    <string name="recientes">&#xf06a;</string>
+    <string name="mapa">&#xf278;</string>
+
+    <string name="compartir">&#xf1e0;</string>
+
+    <string name="compartir2">&#xf1e1;</string>
+    <string name="compartir3">&#xf1e0;</string>
+
+
+
+
+    <string name="localizacion">&#xf140;</string>
+
+    <string name="hora">&#xf017;</string>>
+    <string name="ubicacion">&#xf08d;</string>
+    <string name="edificio">&#xf0f7;</string>
+    <string name="profundidad">&#xf0ab;</string>
+    <string name="distancia">&#xf0ac;</string>
+
+
+    <string name="picos">&#xf140;</string>
+
+
+    <string-array name="planets_array">
+        <item>2</item>
+        <item>2.5</item>
+        <item>3</item>
+        <item>3.5</item>
+        <item>4</item>
+        <item>4.5</item>
+        <item>5</item>
+        <item>5.5</item>
+        <item>6</item>
+        <item>6.5</item>
+        <item>7</item>
+        <item>7.5</item>
+        <item>8</item>
+        <item>8.5</item>
+        <item>9</item>
+        <item>9.5</item>
+        <item>10</item>
+
+        <item>8.5</item>
+
+    </string-array>
+
+
+    <string name="ubicacion_text">Ubicación :  </string>
+    <string name="magnitud_text">Magnitud :  </string>
+    <string name="longitud_text">Longitud : </string>
+    <string name="latitud_text">Latitud : </string>
+    <string name="fecha_text">Fecha : </string>
+    <string name="hora_text">Hora : </string>
+    <string name="distancia_text">Distancia : </string>
+    <string name="profundidad_text">Profundidad : </string>
+
+    <string name="longitudtext">Longitud : </string>
+    <string name="latitudtext">Latitud : </string>
+
+
+    <string name="labellatitud">Longitud</string>
+    <string name="labellongitud">Latitud</string>
+
+    <string name="labellocalizacion">Ubicación : </string>
+
+    <!--reutilizables-->
+
+
+    <string name="input_text">Looking for...</string>
+    <string name="button_send">Go!</string>
+    <string name="police_stations">Police Stations in Victoria</string>
+    <string name="medicare">Medicare Offices</string>
+    <string name="attrib_format">Data from &lt;a href = "%s">data.gov.au&lt;/a>, modified under &lt;a href = \"http://creativecommons.org/licenses/by/3.0/au/\">CC BY 3.0 AU&lt;/a></string>
+    <string name="police_stations_url">http://data.gov.au/dataset/police-station-locations/resource/76110b24-0f0a-4c29-9583-3f99eaba486c</string>
+    <string name="medicare_url">http://data.gov.au/dataset/location-of-medicare-offices/resource/5d38e1be-4011-49c4-8b8b-75405eeb1088</string>
+    <string name="kml_url">http://googlemaps.github.io/kml-samples/morekml/Polygons/Polygons.Google_Campus.kml</string>
+    <!--<string name="geojson_url">http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson</string>-->
+    <string name="geojson_url">http://websystemlima.com/sismosmundo.json</string>
+    <string name="geojson_url2">http://websystemlima.com/sismos.txt</string>
+
+
+    <string name="remove">Remove</string>
+    <string name="add">Add</string>
+
+
+    <!--para la pantalla de busqueda-->
+    <string name="labelmagnitud">Magnitud</string>
+    <string name="filtrodesismos">Filtro de Sismos GPS</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="texto_listado">Sismos Recientes</string>
+    <string name="mapasismico">Mapa Sísmico</string>
+
+    <string name="texto_glosario">Glosario de Términos </string>
+    <string name="texto_mapa_sismos">Mapa de últimos sismos</string>
+
+
+    <string name="texto_mapa_de_sismos">Mapa de sismos</string>
+    <string name="title_activity_navegador">Navegador</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="ultimo_sismo">Último sismo</string>
+
+
+    <string name="action_settings">Settings</string>
+
+
+    <string name="itexto1">Tipo: </string>
+    <string name="itexto2">Magnitud: </string>
+    <string name="itexto3">Lugar: </string>
+    <string name="itexto4">Profundidad: </string>
+    <string name="itexto5">Fecha: </string>
+    <string name="itexto6">Intensidad: </string>
+
+
+    <string name="PRIMERA_TEXT">Sismo con magnitud menor a 4.5</string>
+
+    <string name="SEGUNDA_TEXT">Sismo con magnitud entre 4.5 y 6.0</string>
+
+
+    <string name="TERCERA_TEXT">Sismo con magnitud mayor a 6.0</string>
+
+
+    <string name="FECHA_y_HORA_LOCAL_TEXT">Día, mes, año y hora de ocurrencia del sismo.</string>
+
+
+    <string name="MAGNITUD_TEXT">Para un sismo con magnitudes ≤ 6.5 se considera la escala de Magnitud Local (ML) o Richter. Para sismos mayores, la escala magnitud momento (Mw).</string>
+
+
+       <!-- <string name="MAGNITUD_TEXT">Para un sismo con magnitud menor a 6.0 se considera la escala de Magnitud Local
+
+    (ML) o Richter. Para sismos mayores, la escala magnitud momento (Mw).</string>
+    -->
+
+
+    <string name="REFERENCIA_TEXT">Ubicación del epicentro del sismo con relación a la Plaza de Armas de la
+
+    ciudad/localidad más cercana.</string>
+
+
+    <string name="UBICACIÓN_TEXT">Coordenadas geográficas del epicentro.</string>
+
+
+    <string name="PROFUNDIDAD_TEXT">Profundidad del foco sísmico por debajo de la superficie.</string>
+
+
+    <string name="INTENSIDAD_TEXT">Intensidad de sacudimiento del suelo de acuerdo a la escala de Mercalli Modificada.</string>
+
+
+    <string name="text_favorites">Favorites</string>
+    <string name="text_schedules">Schedules</string>
+    <string name="text_music">Music</string>
+
+
+
+    <string name="reportar">REPORTAR</string>
+    <string name="estoy_bien">ESTOY BIEN</string>
+    <string name="status">STATUS</string>
+    <string name="asistencia">ASISTENCIA</string>
+    <string name="sos">S.O.S</string>
+
+
+
+    <string name="si">SI</string>
+    <string name="no">NO</string>
+    <string name="m2">M2</string>
+    <string name="m3">M3</string>
+    <string name="m4">M4</string>
+    <string name="m5">M5</string>
+
+
+    <string-array name="navigation_drawer_items_array">
+        <item>Connect</item>
+        <item>Fixtures</item>
+        <item>Table</item>
+    </string-array>
+</resources>

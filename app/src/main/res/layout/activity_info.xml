@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="sistemasfireg.igp.org.sismosperu.Info"
+    >
+
+
+    <RelativeLayout
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="0dp"
+        android:id="@+id/encabezado"
+        android:background="@drawable/encabezadobackground">
+
+
+
+
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/imagen1">
+
+            <ImageView
+                android:src="@drawable/logoigp"
+                android:id="@+id/logoigpd"
+                style="@style/logoigp_normal_port2"
+                android:layout_height="75dp"
+                android:layout_alignParentLeft="true"
+                android:gravity="center|center_vertical"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+
+
+
+        <ImageView
+            android:layout_height="65dp"
+            style="@style/censislogo_normal_port"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:src="@drawable/centroencabezadoigp2"
+            android:id="@+id/imageView2"
+            android:layout_centerHorizontal="true"
+            />
+
+
+
+
+        <RelativeLayout android:layout_width="40dp"
+            android:layout_height="60dp"
+
+            android:layout_alignParentRight="true"
+            android:id="@+id/imagen3">
+
+
+            <Button
+                android:background="@drawable/menuigp2"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:id="@+id/button"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/encabezado"
+        android:id="@+id/imageView4"
+        >
+
+        <ImageView
+            android:src="@drawable/logoigp"
+            android:id="@+id/logoigp"
+            android:layout_width="120dp"
+            android:layout_marginTop="100dp"
+            style="@style/imagen_info"
+            android:layout_height="100dp"
+            android:padding="8dp"
+            android:background="@drawable/backimage"
+
+            android:gravity="center|center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:id="@+id/nivel11"
+        android:layout_below="@+id/imageView4">
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/datossetlabel"
+                android:text="Nombre del Aplicativo">
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nombreaplicativo"
+                android:gravity="end"
+                style="@style/datosset"
+
+                android:text="dato1">
+            </TextView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nivel12"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/nivel11">
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/datossetlabel"
+
+                android:text="Codigo de Versión ">
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                style="@style/datosset"
+                android:id="@+id/datoversionnumero"
+
+                android:text="dato2">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nivel13"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/nivel12">
+
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/datossetlabel"
+
+                android:text="Nombre de Versión">
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                style="@style/datosset"
+
+                android:id="@+id/datoversionnombre"
+                android:text="dato3">
+            </TextView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nivel14"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/nivel13">
+
+        <RelativeLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/datossetlabel"
+
+                android:text="Plataforma base">
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                style="@style/datosset"
+
+                android:text="Android">
+            </TextView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/cc15"
+        android:layout_marginBottom="28dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+
+
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            style="@style/datosset"
+
+            android:text="www.igp.gob.pe">
+        </TextView>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+
+

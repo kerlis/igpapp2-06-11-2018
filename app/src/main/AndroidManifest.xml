@@ -1,0 +1,267 @@
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="sistemasfireg.igp.org.sismosperu"
+    tools:node="replace">
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="com.htc.launcher.permission.CHANGE_CONFIGURATION"/>
+    <uses-permission android:name="com.htc.launcher.permission.MODIFY_AUDIO_SETTINGS"/>
+
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+
+    <!--for htc-->
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT"/>
+
+    <!--for sony-->
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE"/>
+
+    <!--for apex-->
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
+
+    <!--for solid-->
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE"/>
+
+    <!--for huawei-->
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
+
+    <!--for ZUK-->
+    <uses-permission android:name="android.permission.READ_APP_BADGE"/>
+
+    <!--for OPPO-->
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
+
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ"/>
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE"/>
+
+
+    <uses-permission android:name="android.permission.PERMISSION_GRANTED" />
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <supports-screens android:xlargeScreens="true" />
+    <supports-screens android:largeScreens="true" />
+    <supports-screens android:anyDensity="true" />
+    <supports-screens android:normalScreens="true" />
+    <supports-screens android:smallScreens="true" />
+
+
+    <permission
+        android:name="sistemasfireg.igp.org.sismosperu.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="sistemasfireg.igp.org.sismosperu.permission.MAPS_RECEIVE" />
+
+    <application
+        android:name="android.support.multidex.MultiDexApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+         tools:replace="android:supportsRtl">
+
+        <meta-data
+            tools:replace="android:value"
+            android:name="android.support.VERSION"
+            android:value="26.0.0" />
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.SplashScreen"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Ultimosismo3"
+            android:screenOrientation="portrait" />
+
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!--
+             <meta-data        android:name="com.google.firebase.messaging.default_notification_channel_id"
+                 android:value="@string/default_notification_channel
+
+
+
+
+               <meta-data        android:name="com.google.firebase.messaging.default_notification_channel_id"
+                 android:value="@string/default_notification_channel_id"/>
+
+
+
+
+          <meta-data
+                 android:name="com.google.android.maps.v2.API_KEY"
+                 android:value="AIzaSyBn447xeNvDqgwfix69ROb-otRg6e4xWsI" />
+     -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyChRE4B12A8MFwNc4ftdxivF5hXi-e7b3o" />
+
+
+        <receiver
+            android:name="sistemasfireg.igp.org.sismosperu.InicioReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Glosarioestatico"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Ultimosismoslist"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.DetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Ajustesnotificaciones"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Localizacion"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Getlocationandmore"
+            android:screenOrientation="portrait" />
+
+
+
+
+
+
+        <receiver
+            android:name="sistemasfireg.igp.org.sismosperu.InicioReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Listadoenmapa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Info"
+            android:screenOrientation="portrait" />
+
+        <!--
+        <service android:name=".MiFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".MiFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        -->
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Listadoredessociales"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="sistemasfireg.igp.org.sismosperu.Contenedorredsocial"
+            android:screenOrientation="portrait" />
+
+
+
+
+
+        <!--
+
+
+
+        <service android:name="sistemasfireg.igp.org.sismosperu.FirebaseNotificationservice4">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+
+        <service android:name="sistemasfireg.igp.org.sismosperu.FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+   -->
+
+
+
+
+        <service android:name=".Messagingservicef">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+
+
+
+
+   <!--
+
+
+        <service android:name="sistemasfireg.igp.org.sismosperu.FirebaseMessaging5">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        -->
+
+        <service android:name="sistemasfireg.igp.org.sismosperu.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="sistemasfireg.igp.org.sismosperu.Configurar"
+            android:screenOrientation="portrait" >
+
+        </activity>
+        <activity android:name="sistemasfireg.igp.org.sismosperu.Configuraciones"
+            android:screenOrientation="portrait" >
+
+        </activity>
+    </application>
+
+</manifest>

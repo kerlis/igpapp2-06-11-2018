@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/blanco"
+    android:layout_height="match_parent" >
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logoigp"
+            android:id="@+id/logotipo"
+            android:contentDescription="@string/app_name"
+            android:background="@color/blanco" />
+        <TextView android:layout_width="wrap_content"
+            android:layout_below="@id/logotipo"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textSize="11sp"
+            android:layout_marginTop="-50dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:textColor="@color/igp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/lema"/>
+    </RelativeLayout>
+</RelativeLayout>
+
+
+<!--
+<RelativeLayout android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/encabezado">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:src="@drawable/cintillo2"
+            android:contentDescription="@string/app_name"
+            android:background="@color/blanco"
+            android:layout_height="60dp" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/encabezado"
+        android:orientation="vertical"
+
+        android:gravity="center"
+        android:background="?colorPrimary">
+
+
+
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/logoigp"
+            android:contentDescription="@string/app_name"
+            android:background="@color/blanco" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+ -->

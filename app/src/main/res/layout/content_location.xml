@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+
+    <TextView android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textAlignment="center"
+        android:id="@+id/titulo"
+         android:text="AJUSTES DE LAS NOTIFICACIONES"
+        android:layout_height="wrap_content"/>
+
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/titulo"
+        android:id="@+id/bloque1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView android:layout_width="match_parent"
+            android:id="@+id/labelactivarnotificacoines"
+            android:text="Activar Notificaciones"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:layout_marginTop="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/labelactivarnotificacoines"
+            android:id="@+id/grupo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+            <RadioButton
+                android:id="@+id/rb_coldfusion"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/si"
+                android:paddingRight="2dp"/>
+            <RadioButton
+                android:id="@+id/rb_flash"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:paddingRight="2dp"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_below="@+id/bloque1"
+        android:id="@+id/bloque2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView android:layout_width="match_parent"
+            android:id="@+id/labelmagnitudes"
+            android:text="Magnitud minima"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/labelmagnitudes"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/grupo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+            <RadioButton
+                android:id="@+id/m2"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m2"
+                android:paddingRight="2dp"/>
+            <RadioButton
+                android:id="@+id/m3"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="2dp"
+                android:text="@string/m3" />
+            <RadioButton
+                android:id="@+id/m4"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m4"
+                android:paddingRight="2dp"/>
+            <RadioButton
+                android:id="@+id/m5"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m5"
+                android:paddingRight="2dp"/>
+            <RadioButton
+                android:id="@+id/todos"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="todos"
+                android:paddingRight="2dp"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_below="@+id/bloque2"
+        android:id="@+id/bloque3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView android:layout_width="match_parent"
+            android:id="@+id/labelcercanos"
+            android:text="Notificarme de sismos unicamente cercanos a mi ubicacion"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/labelcercanos"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/grupo3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+            <RadioButton
+                android:id="@+id/cien"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:paddingRight="0dp"/>
+            <RadioButton
+                android:id="@+id/docientoscincuenta"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="250"
+                android:paddingRight="0dp"/>
+            <RadioButton
+                android:id="@+id/quinientos"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500"
+                android:paddingRight="0dp"/>
+            <RadioButton
+                android:id="@+id/mil"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:paddingRight="0dp"/>
+            <RadioButton
+                android:id="@+id/dosmil"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:paddingRight="0dp"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/bloque3"
+        android:id="@+id/bloque4"
+        android:layout_height="wrap_content">
+
+        <Button android:id="@+id/picksound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mostrar sonido" />
+
+        <Button android:id="@+id/btnShowLocation"
+            android:layout_below="@+id/picksound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mostrar sonido" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

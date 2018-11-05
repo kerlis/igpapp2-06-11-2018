@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blanco"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    fab:context="sistemasfireg.igp.org.sismosperu.Contenedorredsocial">
+
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/encabezado2">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                        <include
+                            android:id="@+id/head"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            layout="@layout/encabezado"/>
+                </RelativeLayout>
+        </RelativeLayout>
+
+                <TextView
+                    android:text="Redes Sociales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/encabezado2"
+                    android:id="@+id/texto"
+                    style="@style/titulolistadosismos" />
+
+
+
+        <WebView
+            android:layout_below="@+id/texto"
+            android:layout_width="match_parent"
+            android:id="@+id/contenedor"
+            android:layout_height="match_parent"  >
+        </WebView>
+
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
+                    />
+
+        </RelativeLayout>
+
+        <RelativeLayout android:layout_width="230dp"
+            android:id="@+id/mDrawerBlock"
+            android:layout_gravity="start"
+            android:background="@color/blanco"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/darker_gray"
+            android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/ty"
+                    layout="@layout/list"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true" />
+        </RelativeLayout>
+
+
+
+
+
+</android.support.v4.widget.DrawerLayout>
+
+
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_configurar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="sistemasfireg.igp.org.sismosperu.Configurar">
+
+    <TextView
+        android:text="Configurar notificaciones"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/amarillo"
+        android:layout_alignParentTop="true"
+         android:layout_marginTop="32dp"
+        android:id="@+id/titutlo" />
+
+    <RadioGroup
+        android:id="@+id/radio"
+        android:layout_below="@+id/titutlo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notificar"
+            android:id="@+id/notificar"
+            android:layout_below="@+id/radioButton"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No notificar"
+            android:id="@+id/nonotificar"
+            android:layout_below="@+id/radioButton2"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:onClick="onRadioButtonClicked"/>
+
+    </RadioGroup>
+
+</RelativeLayout>

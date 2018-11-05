@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView android:layout_width="wrap_content"
+        android:text="Magnitud Minima"
+        android:textSize="13dp"
+        android:padding="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3">
+    </TextView>
+
+    <RadioGroup
+        android:layout_marginTop="10dp"
+        android:id="@+id/grupo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+        <RadioButton
+            android:id="@+id/m2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m2"
+            android:paddingRight="2dp"/>
+        <RadioButton
+            android:id="@+id/m3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/grupo2"
+            android:layout_alignRight="@+id/grupo2"
+            android:layout_below="@+id/textView3"
+            android:paddingRight="2dp"
+            android:text="@string/m3" />
+        <RadioButton
+            android:id="@+id/m4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m4"
+            android:paddingRight="2dp"/>
+        <RadioButton
+            android:id="@+id/m5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/m5"
+            android:paddingRight="2dp"/>
+    </RadioGroup>
+
+
+
+    <TextView android:layout_width="wrap_content"
+        android:id="@+id/miubicaciontexto"
+        android:layout_below="@+id/grupo1"
+        android:text="Notificarme de sismos sentidos en mi ubicación."
+        android:textSize="13dp"
+        android:padding="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <RadioGroup
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/miubicaciontexto"
+        android:id="@+id/grupo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+        <RadioButton
+            android:id="@+id/rb_coldfusion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/si"
+            android:paddingRight="2dp"/>
+        <RadioButton
+            android:id="@+id/rb_flash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no"
+            android:paddingRight="2dp"/>
+    </RadioGroup>
+<!--
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/grupo1">
+
+
+
+                    <RadioButton android:id="@+id/radio_pirates"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/si"
+                        android:onClick="onRadioButtonClicked"/>
+
+                    <RadioButton android:id="@+id/radio_ninjas"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no"
+                        android:onClick="onRadioButtonClicked"/>
+
+
+
+
+    </RadioGroup>
+    -->
+
+
+<!--
+    <ToggleButton
+        android:id="@+id/switchToggle"
+        android:layout_below="@+id/grupo1"
+        android:layout_width="75dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="32dp"
+        android:textOff=""
+        android:textOn="" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/switchToggle"
+        android:layout_alignStart="@+id/switchToggle"
+        android:layout_below="@+id/switchToggle"
+        android:layout_marginTop="52dp"
+        android:text="Switch" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/switch1"
+        android:layout_alignStart="@+id/switch1"
+        android:layout_below="@+id/obtenerdireccion"
+        android:layout_marginTop="54dp"
+        android:text="ToggleButton" />
+    -->
+
+    <Button android:id="@+id/generarnuevaid"
+        android:layout_below="@+id/grupo2"
+        android:text="generar nuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button android:id="@+id/vercapturado2"
+        android:layout_below="@+id/generarnuevaid"
+        android:text="ver valor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button android:id="@+id/vercapturado3"
+        android:layout_below="@+id/vercapturado2"
+        android:text="enviar valor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/vernuevotoken"
+        android:layout_below="@+id/vercapturado2"
+        android:text="ver token instalado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/obtenerdireccion"
+        android:layout_below="@+id/vernuevotoken"
+        android:text="ver direccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/obtenerlocalizacionuno"
+        android:layout_below="@+id/obtenerdireccion"
+        android:text="get location lan long"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button android:id="@+id/ckeckstatusgps"
+        android:layout_below="@+id/obtenerlocalizacionuno"
+        android:text="check status location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

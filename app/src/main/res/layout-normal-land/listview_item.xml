@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+
+    <TextView
+        android:id="@+id/asignacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/magnitudiconodato"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center|center_vertical"
+        android:text="asignacion"/>
+
+    <TextView
+        android:text="@string/label_listview_fechahora"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000"
+        android:id="@+id/fecha"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        style="@style/datofechalistview">
+    </TextView>
+
+    <TextView
+        android:text="@string/label_listview_ubicacion"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000"
+        android:id="@+id/ubicacion"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/fecha"
+        android:layout_centerHorizontal="true"
+        style="@style/datoubicacionlistview">
+    </TextView>
+
+
+    <TextView
+        android:text="@string/label_listview_profundidad"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000"
+        android:id="@+id/profundidad"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/ubicacion"
+        android:layout_centerHorizontal="true"
+        style="@style/datoprofimaxlistview">
+    </TextView>
+
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sismograma3"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/imageView"/>
+
+</RelativeLayout>

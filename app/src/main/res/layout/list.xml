@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="230dp"
+    android:layout_height="match_parent">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:id="@+id/blocke0"
+        android:background="@color/azulbackground"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="180dp"
+            android:src="@drawable/boton_menulogodetalle">
+        </ImageView>
+    </RelativeLayout>
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:id="@+id/blocke1"
+        android:layout_below="@id/blocke0"
+        android:background="@drawable/opcionesbackground"
+        style="@style/contenedormenuopcion"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/opcion1"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/info_iconvolcan"
+                android:layout_width="35dp"
+                android:layout_centerVertical="true"
+                android:layout_height="35dp"
+                android:src="@drawable/sismo_icono" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_toEndOf="@+id/opcion1"
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="ÚLTIMO SISMO"
+                style="@style/menuopcionestext_normal">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/blocke1"
+        android:id="@+id/blocke2"
+        android:background="@drawable/opcionesbackground"
+        style="@style/contenedormenuopcion"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/opcion2"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/info_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                 android:src="@drawable/sismograma_icono" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_toEndOf="@+id/opcion2"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="SISMOS RECIENTES"
+                style="@style/menuopcionestext_normal">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/blocke2"
+        android:id="@+id/blocke3"
+        android:background="@drawable/opcionesbackground"
+        style="@style/contenedormenuopcion"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/opcion4"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/info_iconajustes"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/peru_icono" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_toEndOf="@+id/opcion4"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="MAPA SÍSMICO"
+                style="@style/menuopcionestext_normal">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/blocke3"
+        android:id="@+id/blocke4"
+        android:background="@drawable/opcionesbackground"
+        style="@style/contenedormenuopcion"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/opcion5"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/info_iconquestions"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/notificacion_icono" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_toEndOf="@+id/opcion5"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="NOTIFICACIONES"
+                style="@style/menuopcionestext_normal">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/blocke4"
+        android:id="@+id/blocke5"
+        android:background="@drawable/opcionesbackground"
+        style="@style/contenedormenuopcion"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/opcion7"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/info_iconquestions25"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/glosario_icono" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_toEndOf="@+id/opcion7"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="GLOSARIO"
+                style="@style/menuopcionestext_normal">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/blocke5"
+        android:id="@+id/blocke9"
+        android:background="@drawable/opcionesbackground"
+        style="@style/contenedormenuopcion"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/opcion10"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/info_iconquestions251"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/social" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_toEndOf="@+id/opcion10"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="REDES SOCIALES"
+                style="@style/menuopcionestext_normal">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_below="@+id/blocke9"
+        android:id="@+id/blocke6"
+        android:background="@drawable/opcionesbackground"
+        style="@style/contenedormenuopcion"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/opcion8"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/info_iconquestions256"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/salir_icono" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_toEndOf="@+id/opcion8"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="SALIR"
+                style="@style/menuopcionestext_normal">
+            </TextView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
